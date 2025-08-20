@@ -55,7 +55,7 @@ const Navbar = () => {
           <MobileNavMenu />
             {/* Login Button with icon */}
             <Link
-              href="/login"
+              href="/signIn"
               className="flex items-center space-x-2 text-gray-600 hover:text-indigo-600 transition-colors duration-200 font-medium"
             >
               <FiUser className="w-5 h-5" />
