@@ -1,14 +1,44 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-
+import { signIn } from "next-auth/react";
+import toast from "react-hot-toast";
 export default function SigninForm() {
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    // Add your authentication logic here
-    console.log({ email, password });
+    setLoading(true);
+    toast("Please wait..");
+
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (res?.ok) {
+        Swal.fire({
+          title: "Welcome Back! 🎉",
+          text: "You have successfully signed in.",
+          icon: "success",
+          confirmButtonText: "Go to Home",
+        }).then(() => {
+          router.push("/");
+        });
+      } else {
+        // Error → show toast
+        toast.error(res.error || "Invalid email or password");
+      }
+    } catch (err) {
+      toast.error("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -50,7 +80,7 @@ export default function SigninForm() {
         type="submit"
         className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-md"
       >
-        Sign In
+        {loading ? "Signing In..." : "Sign In"}
       </button>
     </form>
   );
