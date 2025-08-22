@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import MobileMenuToggleButton from "./Components/MobileMenuToggleButton/MobileMenuToggleButton";
 import MobileNavMenu from "./Components/MobileNavMenu/MobileNavMenu";
+import LoginUser from "./Components/LoginUser/LoginUser";
 
 // A professional and minimal navbar component for an e-commerce site
 const Navbar = () => {
@@ -54,13 +55,8 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-4">
           <MobileNavMenu />
             {/* Login Button with icon */}
-            <Link
-              href="/signIn"
-              className="flex items-center space-x-2 text-gray-600 hover:text-indigo-600 transition-colors duration-200 font-medium"
-            >
-              <FiUser className="w-5 h-5" />
-              <span>Login</span>
-            </Link>
+            <LoginUser/>
+
             {/* Shopping Cart Button with icon */}
             <div className="relative group cursor-pointer">
               <Link href="/cart">

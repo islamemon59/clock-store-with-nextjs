@@ -20,6 +20,7 @@ export default function SigninForm() {
         email,
         password,
       });
+      console.log(res);
 
       if (res?.ok) {
         Swal.fire({
