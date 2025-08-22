@@ -4,15 +4,10 @@ import { useSession, signOut } from "next-auth/react";
 import { FaUserCircle } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
-import Loading from "@/app/loading";
 
 const LoginUser = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const [open, setOpen] = useState(false);
-
-  if (status === "loading") {
-    return <Loading/>
-  }
 
   if (!session) {
     return (

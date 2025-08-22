@@ -20,7 +20,7 @@ export const authOptions = {
             email: credentials.email,
           });
           if (!user) throw new Error("No user found");
-console.log(user);
+          console.log(user);
           // Check password
           const isValid = await bcrypt.compare(
             credentials.password,
@@ -31,8 +31,9 @@ console.log(user);
 
           return { id: user._id, name: user.name, email: user.email };
         } catch (error) {
-            console.log(error);
-        //   throw new Error(error);
+          console.log(error);
+          //   throw new Error(error);
+          return null;
         }
       },
     }),

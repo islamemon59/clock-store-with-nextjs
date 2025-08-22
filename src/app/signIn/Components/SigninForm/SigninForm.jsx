@@ -9,38 +9,37 @@ export default function SigninForm() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    toast("Please wait..");
+const handleSignIn = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  toast("Please wait..");
 
-    try {
-      const res = await signIn("credentials", {
-        redirect: false,
-        email,
-        password,
+  try {
+    const res = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    });
+    console.log(res);
+
+    if (res?.error) {
+      toast.error(res.error || "Invalid email or password");
+    } else {
+      Swal.fire({
+        title: "Welcome Back! 🎉",
+        text: "You have successfully signed in.",
+        icon: "success",
+        confirmButtonText: "Go to Home",
+      }).then(() => {
+        router.push("/");
       });
-      console.log(res);
-
-      if (res?.ok) {
-        Swal.fire({
-          title: "Welcome Back! 🎉",
-          text: "You have successfully signed in.",
-          icon: "success",
-          confirmButtonText: "Go to Home",
-        }).then(() => {
-          router.push("/");
-        });
-      } else {
-        // Error → show toast
-        toast.error(res.error || "Invalid email or password");
-      }
-    } catch (err) {
-      toast.error("Something went wrong!");
-    } finally {
-      setLoading(false);
     }
-  };
+  } catch (err) {
+    toast.error("Something went wrong!");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <form onSubmit={handleSignIn} className="mt-6 space-y-5">
