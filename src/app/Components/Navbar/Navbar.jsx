@@ -27,10 +27,10 @@ const Navbar = () => {
           <MobileMenuToggleButton />
           <nav className="hidden md:flex items-center space-x-8">
             <Link
-              href="/shop"
+              href="/products"
               className="text-gray-600 hover:text-indigo-600 transition-colors duration-200 font-medium"
             >
-              Shop
+              Products
             </Link>
             <Link
               href="/collections"
@@ -53,9 +53,9 @@ const Navbar = () => {
           </nav>
           {/* Action Icons and Buttons for desktop */}
           <div className="hidden md:flex items-center space-x-4">
-          <MobileNavMenu />
+            <MobileNavMenu />
             {/* Login Button with icon */}
-            <LoginUser/>
+            <LoginUser />
 
             {/* Shopping Cart Button with icon */}
             <div className="relative group cursor-pointer">
