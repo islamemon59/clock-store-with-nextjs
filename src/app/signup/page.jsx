@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SignupForm from "./Components/SignupForm/SignupForm";
+import SocialLoginButton from "../Components/SocialLoginButton/SocialLoginButton";
 
 export default function Signup() {
   return (
