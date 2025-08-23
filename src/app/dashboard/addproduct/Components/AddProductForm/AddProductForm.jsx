@@ -56,7 +56,7 @@ export default function AddProductForm() {
 
     setSubmitting(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/products`, {
+      const res = await fetch(`api/products`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(productData),
