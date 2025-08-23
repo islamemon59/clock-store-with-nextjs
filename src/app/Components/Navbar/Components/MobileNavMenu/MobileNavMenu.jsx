@@ -16,18 +16,18 @@ const MobileNavMenu = ({isMenuOpen, setIsMenuOpen}) => {
           </button>
           <nav className="flex flex-col items-center space-y-6 text-2xl font-semibold">
             <Link
-              href="/shop"
+              href="/products"
               onClick={() => setIsMenuOpen(false)}
               className="text-gray-800 hover:text-indigo-600 transition-colors duration-200"
             >
-              Shop
+              Products
             </Link>
             <Link
-              href="/collections"
+              href="/dashboard"
               onClick={() => setIsMenuOpen(false)}
               className="text-gray-800 hover:text-indigo-600 transition-colors duration-200"
             >
-              Collections
+              Dashboard
             </Link>
             <Link
               href="/about"
@@ -45,7 +45,7 @@ const MobileNavMenu = ({isMenuOpen, setIsMenuOpen}) => {
             </Link>
             <div className="mt-8 pt-8 border-t border-gray-200 flex flex-col items-center space-y-6">
               <Link
-                href="/login"
+                href="/signIn"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center space-x-4 text-gray-800 hover:text-indigo-600 transition-colors duration-200"
               >

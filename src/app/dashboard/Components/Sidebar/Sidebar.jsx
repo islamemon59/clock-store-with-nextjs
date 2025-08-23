@@ -1,29 +1,23 @@
 "use client";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  FaClock,
-  FaBox,
-  FaUsers,
-  FaChartLine,
-  FaSignOutAlt,
-} from "react-icons/fa";
+import { FaClock, FaChartLine, FaSignOutAlt, FaHome } from "react-icons/fa";
 
 const Sidebar = () => {
   const pathname = usePathname();
 
   const menuItems = [
+    { name: "Home", href: "/", icon: FaHome },
     { name: "Dashboard", href: "/dashboard", icon: FaChartLine },
     { name: "Add Product", href: "/dashboard/addproduct", icon: FaClock },
-    { name: "Products", href: "/dashboard/products", icon: FaBox },
-    { name: "Users", href: "/dashboard/users", icon: FaUsers },
   ];
 
   return (
     <aside className="h-screen w-64 bg-gradient-to-b from-blue-600 to-blue-800 text-white shadow-lg flex flex-col">
       {/* Logo */}
       <div className="p-6 text-center border-b border-blue-500">
-        <h1 className="text-2xl font-bold tracking-wide">Clock Admin</h1>
+        <h1 className="text-2xl font-bold tracking-wide">Admin Panel</h1>
       </div>
 
       {/* Navigation */}
@@ -53,7 +47,7 @@ const Sidebar = () => {
       <div className="p-4 border-t border-blue-500">
         <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-red-500 hover:bg-red-600 transition-all">
           <FaSignOutAlt className="text-lg" />
-          <span>Logout</span>
+          <span onClick={() => signOut()}>Logout</span>
         </button>
       </div>
     </aside>
