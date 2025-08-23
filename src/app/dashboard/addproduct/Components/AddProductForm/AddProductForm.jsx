@@ -56,7 +56,7 @@ export default function AddProductForm() {
 
     setSubmitting(true);
     try {
-      const res = await fetch(`http://localhost:3000/api/products`, {
+      const res = await fetch(`https://clock-store-eta.vercel.app/api/products`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(productData),
