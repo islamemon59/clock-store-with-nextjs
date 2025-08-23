@@ -1,13 +1,13 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const uri = process.env.NEXT_PUBLIC_MONGODB_URI;
+
+const uri = process.env.MONGODB_URI; // ✅ server-side only
 
 export const collectionObj = {
   userCollection: "userData",
   productsCollection: "products",
 };
 
-// Use a global variable to store the MongoDB client promise. This prevents creating a new connection
-// on every API call.
+// Use a global variable to prevent multiple connections in dev
 let clientPromise;
 
 if (!uri) {
