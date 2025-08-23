@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import SigninForm from "./Components/SigninForm/SigninForm";
+import SocialLoginButton from "../Components/SocialLoginButton/SocialLoginButton";
 
 export default function SignIn() {
   return (
@@ -25,10 +26,7 @@ export default function SignIn() {
 
         {/* Google Login */}
         <div className="flex justify-center">
-          <button className="flex items-center justify-center w-full border border-gray-300 py-3 rounded-xl hover:bg-gray-100 transition shadow-sm gap-3 font-medium">
-            <FcGoogle className="text-xl" />
-            Continue with Google
-          </button>
+<SocialLoginButton/>
         </div>
 
         {/* Sign Up Link */}

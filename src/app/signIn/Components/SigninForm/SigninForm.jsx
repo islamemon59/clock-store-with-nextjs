@@ -30,9 +30,9 @@ export default function SigninForm() {
           title: "Welcome Back! 🎉",
           text: "You have successfully signed in.",
           icon: "success",
-          confirmButtonText: "Go to Home",
+          confirmButtonText: "Go to Product Page",
         }).then(() => {
-          router.push("/");
+          router.push("/products");
         });
       }
     } catch (err) {

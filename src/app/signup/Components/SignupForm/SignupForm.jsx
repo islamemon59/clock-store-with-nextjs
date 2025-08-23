@@ -8,10 +8,10 @@ import { useRouter } from "next/navigation";
 const SignupForm = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  
+
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      toast("Please wait..")
+    e.preventDefault();
+    toast("Please wait..");
     setLoading(true);
 
     const name = e.target.name.value;
@@ -51,10 +51,7 @@ const SignupForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="mt-6 space-y-5"
-    >
+    <form onSubmit={handleSubmit} className="mt-6 space-y-5">
       {/* Title */}
       <h2 className="text-3xl font-extrabold text-gray-900 text-center">
         Create Account
@@ -113,17 +110,6 @@ const SignupForm = () => {
       >
         {loading ? "Creating Account..." : "Sign Up"}
       </button>
-
-      {/* Footer */}
-      <p className="mt-6 text-center text-gray-500 text-sm sm:text-base">
-        Already have an account?{" "}
-        <a
-          href="/signIn"
-          className="text-blue-600 hover:underline font-medium"
-        >
-          Sign In
-        </a>
-      </p>
     </form>
   );
 };
