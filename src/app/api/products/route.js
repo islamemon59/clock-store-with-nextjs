@@ -16,3 +16,25 @@ export async function GET() {
     );
   }
 }
+
+export async function POST(req) {
+  try {
+    const body = await req.json();
+    const productsCollection = await dbConnect(
+      collectionObj.productsCollection
+    );
+
+    const result = await productsCollection.insertOne({
+      ...body,
+      createdAt: new Date(),
+    });
+
+    return NextResponse.json({ success: true, insertedId: result.insertedId });
+  } catch (err) {
+    console.error("Error adding product:", err);
+    return NextResponse.json(
+      { success: false, message: "Error adding product" },
+      { status: 500 }
+    );
+  }
+}
