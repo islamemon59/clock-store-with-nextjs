@@ -8,22 +8,23 @@ export default async function ProductsPage({ searchParams }) {
   const sortOption = searchParams.sort || "default";
 
   const allProducts = await getProducts();
+  console.log(allProducts);
 
-  const filteredAndSortedProducts = allProducts
-    .filter(
-      (product) =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .sort((a, b) => {
-      if (sortOption === "price-asc") {
-        return parseFloat(a.price) - parseFloat(b.price);
-      }
-      if (sortOption === "price-desc") {
-        return parseFloat(b.price) - parseFloat(a.price);
-      }
-      return 0;
-    });
+  // const filteredAndSortedProducts = allProducts
+  //   .filter(
+  //     (product) =>
+  //       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //       product.description.toLowerCase().includes(searchTerm.toLowerCase())
+  //   )
+  //   .sort((a, b) => {
+  //     if (sortOption === "price-asc") {
+  //       return parseFloat(a.price) - parseFloat(b.price);
+  //     }
+  //     if (sortOption === "price-desc") {
+  //       return parseFloat(b.price) - parseFloat(a.price);
+  //     }
+  //     return 0;
+  //   });
 
   return (
     <div className="bg-gray-50 min-h-screen p-8 md:p-12 font-sans">
@@ -35,7 +36,7 @@ export default async function ProductsPage({ searchParams }) {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {filteredAndSortedProducts.map((product) => (
+          {allProducts.map((product) => (
             <div
               key={product.name}
               className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col"
@@ -61,7 +62,7 @@ export default async function ProductsPage({ searchParams }) {
                     ${parseFloat(product.price).toFixed(2)}
                   </span>
                 </div>
-                <Link href={product.details_link} passHref>
+                <Link href={`/products/${product._id}`} passHref>
                   <button className="mt-6 w-full bg-white text-blue-600 border border-blue-600 py-3 rounded-2xl hover:bg-blue-600 hover:text-white transition-colors font-medium flex items-center justify-center space-x-2">
                     <span>Details</span>
 
@@ -79,10 +80,10 @@ export default async function ProductsPage({ searchParams }) {
 
 // Function to simulate fetching data from an API
 async function getProducts() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/products`);
   if (!res.ok) {
     throw new Error("Failed to fetch products");
   }
   const products = await res.json();
-  return products.map((product, index) => ({ ...product, _id: index }));
+  return products
 }
