@@ -58,4 +58,4 @@ This app demonstrates **public pages, protected routes, authentication, and prod
 1. Clone the repository:
    ```bash
    git clone https://github.com/islamemon59/clock-store-with-nextjs.git
-   cd clock-store-with-nextjs
+   cd clock-store-with-nextjs 
